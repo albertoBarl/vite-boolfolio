@@ -5,7 +5,7 @@
 </template>
 
 <style lang="scss">
-@use "./style/generals.scss" as *;
+@use "./style/app.scss" as *;
 @use "./style/partials/mixins" as *;
 @use "./style/partials/variables" as *;
 </style>
