@@ -1,7 +1,15 @@
-<script></script>
+<script>
+import ProjectMain from "./components/ProjectMain.vue";
+
+export default {
+  components: {
+    ProjectMain,
+  },
+};
+</script>
 
 <template>
-  <h1>HELLO</h1>
+  <ProjectMain />
 </template>
 
 <style lang="scss">
