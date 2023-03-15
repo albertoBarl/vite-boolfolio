@@ -4,7 +4,7 @@
       <img
         :src="
           project.cover_image != null
-            ? `${baseUrl}/storage/${project.cover_image}`
+            ? `${store.baseUrl}/storage/${project.cover_image}`
             : 'https://picsum.photos/200/300'
         "
         class="w-100"
@@ -15,11 +15,17 @@
   </div>
 </template>
 <script>
+import { store } from "../../store";
+
 export default {
   name: "ProjectCard",
   props: {
     project: Object,
-    baseUrl: String,
+  },
+  data() {
+    return {
+      store,
+    };
   },
 };
 </script>

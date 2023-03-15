@@ -5,14 +5,14 @@
       class="container justify-content-center d-flex flex-wrap gap-5"
       id="projectMain"
     >
-      <div v-if="loading" class="lds-facebook">
+      <div v-if="store.loading" class="lds-facebook">
         <div></div>
         <div></div>
         <div></div>
       </div>
 
       <div v-else v-for="project in projects" :key="project.id">
-        <ProjectCard :project="project" :baseUrl="`${baseUrl}`" />
+        <ProjectCard :project="project" />
       </div>
     </div>
   </main>
@@ -21,15 +21,16 @@
 <!-- script -->
 <script>
 import axios from "axios";
+import { store } from "../store";
+
 import ProjectCard from "../components/elements/ProjectCard.vue";
 
 export default {
   name: "ProjectMain",
   data() {
     return {
+      store,
       projects: [],
-      loading: true,
-      baseUrl: "http://127.0.0.1:8000",
     };
   },
   components: {
@@ -37,13 +38,13 @@ export default {
   },
   methods: {
     getProjects() {
-      this.loading = true;
+      this.store.loading = true;
 
       //   axios call to recover API from back-end
-      axios.get(`${this.baseUrl}/api/projects`).then((response) => {
+      axios.get(`${this.store.baseUrl}/api/projects`).then((response) => {
         if (response.data.success) {
           this.projects = response.data.results;
-          this.loading = false;
+          this.store.loading = false;
         } else {
           //   alert for a bad axios call
         }
