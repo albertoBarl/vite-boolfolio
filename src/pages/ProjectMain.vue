@@ -19,7 +19,7 @@
 <!-- script -->
 <script>
 import axios from "axios";
-import ProjectCard from "./ProjectCard.vue";
+import ProjectCard from "./elements/ProjectCard.vue";
 
 export default {
   name: "ProjectMain",
