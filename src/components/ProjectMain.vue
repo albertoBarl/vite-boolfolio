@@ -8,18 +8,22 @@
 
     <div
       v-else
-      class="card"
+      class="card justify-content-between"
       style="max-width: 200px; min-height: 250px"
       v-for="item in projects"
       :key="item.id"
     >
       <div class="card-img-top">
         <img
-          :src="`${baseUrl}/storage/${item.cover_image}`"
-          :alt="item.title + '<- image non available'"
+          :src="
+            item.cover_image != null
+              ? `${baseUrl}/storage/${item.cover_image}`
+              : 'https://picsum.photos/200/300'
+          "
+          class="w-100"
         />
       </div>
-      <div class="card-title">{{ item.title }}</div>
+      <div class="card-title text-uppercase">{{ item.title }}</div>
       <a href="#" class="btn btn-success">Visualizza dettaglio</a>
     </div>
   </div>
