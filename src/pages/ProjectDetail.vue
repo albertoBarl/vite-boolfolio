@@ -1,5 +1,25 @@
 <template lang="">
-  <div>DETTAGLIO PROGETTO</div>
+  <div v-if="store.loading" class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <div class="container">
+    <h2>{{ project.title }}</h2>
+    <div class="w-50">
+      <img
+        :src="
+          project.cover_image != null
+            ? `${store.baseUrl}/storage/${project.cover_image}`
+            : 'https://picsum.photos/200/300'
+        "
+        alt="not available"
+        class="w-50"
+      />
+    </div>
+    <p>{{ project.content }}</p>
+  </div>
 </template>
 <script>
 import axios from "axios";
@@ -10,14 +30,18 @@ export default {
   data() {
     return {
       store,
-      project: null,
+      project: [],
     };
   },
   mounted() {
-    this.store.laoding = true;
+    this.store.loading = true;
     axios
       .get(`${this.store.baseUrl}/api/projects/${this.$route.params.slug}`)
-      .then((response) => {});
+      .then((response) => {
+        if (response.data.success) {
+          this.project = response.data.project;
+        }
+      });
   },
 };
 </script>
