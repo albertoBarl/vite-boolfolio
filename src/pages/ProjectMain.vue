@@ -1,6 +1,6 @@
 <template lang="">
   <main class="text-center p-5">
-    <h1>BOOLPRESS</h1>
+    <h1 class="pb-5">BOOLPRESS</h1>
     <div
       class="container justify-content-center d-flex flex-wrap gap-5"
       id="projectMain"
