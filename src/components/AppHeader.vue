@@ -23,6 +23,7 @@ export default {
       menuItems: [
         { label: "Homepage", routeName: "home" },
         { label: "Projects", routeName: "projects" },
+        { label: "Contacts", routeName: "contacts" },
       ],
     };
   },
