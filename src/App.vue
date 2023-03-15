@@ -1,15 +1,21 @@
 <script>
 import ProjectMain from "./components/ProjectMain.vue";
+import AppHeader from "./AppHeader.vue";
+import AppFooter from "./AppFooter.vue";
 
 export default {
   components: {
+    AppHeader,
+    AppFooter,
     ProjectMain,
   },
 };
 </script>
 
 <template>
+  <AppHeader />
   <ProjectMain />
+  <AppFooter />
 </template>
 
 <style lang="scss">
