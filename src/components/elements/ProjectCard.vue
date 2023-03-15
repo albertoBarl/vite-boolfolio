@@ -11,7 +11,11 @@
       />
     </div>
     <div class="card-body text-uppercase">{{ project.title }}</div>
-    <a href="#" class="card-footer btn btn-success">Visualizza dettaglio</a>
+    <router-link
+      :to="{ name: 'single-project', params: { slug: project.slug } }"
+      class="card-footer btn btn-success"
+      >View details</router-link
+    >
   </div>
 </template>
 <script>
