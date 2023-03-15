@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="text-white">PROVA FOOTER</div>
+  <div class="text-white text-center p-5">PROVA FOOTER</div>
 </template>
 <script>
 export default {};

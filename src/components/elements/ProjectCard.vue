@@ -1,8 +1,5 @@
 <template lang="">
-  <div
-    class="card justify-content-between"
-    style="max-width: 200px; min-height: 350px"
-  >
+  <div class="card" style="width: 200px; min-height: 500px">
     <div class="card-img-top">
       <img
         :src="
@@ -13,8 +10,8 @@
         class="w-100"
       />
     </div>
-    <div class="card-title text-uppercase">{{ project.title }}</div>
-    <a href="#" class="btn btn-success">Visualizza dettaglio</a>
+    <div class="card-body text-uppercase">{{ project.title }}</div>
+    <a href="#" class="card-footer btn btn-success">Visualizza dettaglio</a>
   </div>
 </template>
 <script>

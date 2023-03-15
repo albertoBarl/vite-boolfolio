@@ -1,19 +1,21 @@
 <template lang="">
-  <h1>BOOLPRESS</h1>
-  <div
-    class="container justify-content-center d-flex flex-wrap gap-5"
-    id="projectMain"
-  >
-    <div v-if="loading" class="lds-facebook">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+  <main class="text-center p-5">
+    <h1>BOOLPRESS</h1>
+    <div
+      class="container justify-content-center d-flex flex-wrap gap-5"
+      id="projectMain"
+    >
+      <div v-if="loading" class="lds-facebook">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
 
-    <div v-else v-for="project in projects" :key="project.id">
-      <ProjectCard :project="project" :baseUrl="`${baseUrl}`" />
+      <div v-else v-for="project in projects" :key="project.id">
+        <ProjectCard :project="project" :baseUrl="`${baseUrl}`" />
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <!-- script -->
