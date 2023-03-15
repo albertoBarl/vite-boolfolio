@@ -1,30 +1,17 @@
 <template lang="">
-  <div class="container d-flex flex-wrap gap-3" id="projectMain">
+  <h1>BOOLPRESS</h1>
+  <div
+    class="container justify-content-center d-flex flex-wrap gap-5"
+    id="projectMain"
+  >
     <div v-if="loading" class="lds-facebook">
       <div></div>
       <div></div>
       <div></div>
     </div>
 
-    <div
-      v-else
-      class="card justify-content-between"
-      style="max-width: 200px; min-height: 250px"
-      v-for="item in projects"
-      :key="item.id"
-    >
-      <div class="card-img-top">
-        <img
-          :src="
-            item.cover_image != null
-              ? `${baseUrl}/storage/${item.cover_image}`
-              : 'https://picsum.photos/200/300'
-          "
-          class="w-100"
-        />
-      </div>
-      <div class="card-title text-uppercase">{{ item.title }}</div>
-      <a href="#" class="btn btn-success">Visualizza dettaglio</a>
+    <div v-else v-for="project in projects" :key="project.id">
+      <ProjectCard :project="project" :baseUrl="`${baseUrl}`" />
     </div>
   </div>
 </template>
@@ -32,6 +19,7 @@
 <!-- script -->
 <script>
 import axios from "axios";
+import ProjectCard from "./ProjectCard.vue";
 
 export default {
   name: "ProjectMain",
@@ -41,6 +29,9 @@ export default {
       loading: true,
       baseUrl: "http://127.0.0.1:8000",
     };
+  },
+  components: {
+    ProjectCard,
   },
   methods: {
     getProjects() {
