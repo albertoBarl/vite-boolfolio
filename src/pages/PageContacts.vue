@@ -25,9 +25,9 @@
       </div>
 
       <!-- write us -->
-      <div class="row bg-success text-white">
+      <div class="row rounded bg-success text-white m-5">
         <h5 class="text-center p-3">Write us</h5>
-        <form action="">
+        <form @submit.prevent="sendForm">
           <div class="row">
             <div class="col-6 mb-3">
               <label class="control-label" for="nome">Nome</label>
@@ -83,7 +83,9 @@
               ></textarea>
             </div>
             <div class="col-12 mb-3 text-center">
-              <button type="submit" class="btn btn-light">Send</button>
+              <button type="submit" class="btn btn-light" :disabled="loading">
+                {{ loading ? "Sending.." : "Send" }}
+              </button>
             </div>
           </div>
         </form>
@@ -92,10 +94,52 @@
   </main>
 </template>
 <script>
+import axios from "axios";
+import { store } from "../store";
+
 export default {
   name: "PageContacts",
   data() {
-    return {};
+    return {
+      store,
+      name: "",
+      surname: "",
+      email: "",
+      phone: "",
+      message: "",
+      errors: null,
+      success: false,
+      loading: false,
+    };
+  },
+  methods: {
+    sendForm() {
+      const data = {
+        name: this.name,
+        surname: this.surname,
+        email: this.email,
+        phone: this.phone,
+        message: this.message,
+      };
+
+      this.loading = true;
+
+      axios
+        .post(`${this.store.baseUrl}/api/contacts`, data)
+        .then((response) => {
+          if (!response.data.success) {
+            this.errors = response.data.errors;
+          } else {
+            this.name = "";
+            this.surname = "";
+            this.email = "";
+            this.phone = "";
+            this.message = "";
+            this.success = true;
+            this.loading = false;
+          }
+        });
+    },
   },
 };
 </script>
